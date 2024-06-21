@@ -1,0 +1,37 @@
+<queries>
+  <query name="us.ct.k12.tolland.identimetrics.students.get_import_data" flattened="true">
+  <summary>identiMetrics Student Import File Data</summary>
+    <!-- <args>
+        <arg name="studentNumber" required="true" description="Student Number" type="primitive" column="students.student_number"/>
+    </args>     -->
+    <columns>
+        <!-- <column column="students.id">students.home_room</column> -->
+        <column>students.last_name</column>
+        <column>students.first_name</column>
+        <column>students.middle_name</column>
+        <column>students.student_number</column>
+        <column>schools.abbreviation</column>
+        <column>students.grade_level</column>
+        <column>schools.school_number</column>
+    </columns>
+    <sql><![CDATA[
+      select unique students.last_name, students.first_name, students.middle_name, students.student_number, schools.abbreviation, students.grade_level, schools.school_number from students join schools on students.schoolid = schools.School_Number where students.enroll_status = 0 ORDER BY abbreviation,grade_level,last_name,first_name,middle_name
+    ]]></sql>
+  </query>
+  <query name="us.ct.k12.tolland.identimetrics.staff.get_import_data" flattened="true">
+  <summary>identiMetrics Staff Import File Data</summary>  
+    <columns>
+        <column>users.last_name</column>
+        <column>users.first_name</column>
+        <column>users.middle_name</column>
+        <column>users.teachernumber</column>
+        <column>schools.abbreviation</column>
+        <column>level2</column>
+        <column>schools.school_number</column>
+    </columns>
+    <sql><![CDATA[
+      select unique users.last_name, users.first_name, users.middle_name, users.teachernumber, schools.abbreviation, 'Staff' as "level2", schools.school_number from users join schools on users.HomeSchoolID = schools.School_Number join schoolstaff on users.dcid = schoolstaff.Users_DCID where schoolstaff.StaffStatus = 1 ORDER BY abbreviation,last_name,first_name,middle_name
+    ]]></sql>
+  </query>
+  <!-- Define more queries here -->
+</queries>

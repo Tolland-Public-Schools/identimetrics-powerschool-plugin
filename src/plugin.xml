@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://plugin.powerschool.pearson.com"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd"
+        name="Identimetrics Plugin"
+        description="Identimetrics Auto Update Queries"
+        version="1.0.0">
+   <oauth></oauth>
+   <access_request>
+    <field table="students" field="last_name" access="ViewOnly"/>
+    <field table="students" field="first_name" access="ViewOnly"/>
+    <field table="students" field="middle_name" access="ViewOnly"/>
+    <field table="students" field="student_number" access="ViewOnly"/>    
+    <field table="students" field="grade_level" access="ViewOnly"/>
+    <field table="students" field="schoolid" access="ViewOnly"/>
+    <field table="schools" field="abbreviation" access="ViewOnly"/>
+    <field table="schools" field="school_number" access="ViewOnly"/>
+    <field table="users" field="last_name" access="ViewOnly"/>
+    <field table="users" field="first_name" access="ViewOnly"/>
+    <field table="users" field="middle_name" access="ViewOnly"/>
+    <field table="users" field="teachernumber" access="ViewOnly"/>
+    <field table="users" field="HomeSchoolID" access="ViewOnly"/>
+    <field table="users" field="dcid" access="ViewOnly"/>
+    <field table="schoolstaff" field="Users_DCID" access="ViewOnly"/>
+    <field table="schoolstaff" field="StaffStatus" access="ViewOnly"/>
+    <!-- <field table="students" field="student_number" access="FullAccess"/>
+    <field table="students" field="home_room" access="FullAccess"/> -->
+  </access_request>
+    <autoinstall required="true">
+        <autoredeploy />
+    </autoinstall>	
+    <publisher name="Tolland Public Schools">
+        <contact email="asher@tolland.k12.ct.us" />
+    </publisher>
+</plugin>
